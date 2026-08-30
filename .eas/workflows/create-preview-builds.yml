@@ -1,0 +1,19 @@
+name: Publish preview build
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: ["preview", "main"]
+
+jobs:
+  publish_preview_build_android:
+    name: Publish preview build android
+    type: build
+    params:
+      platform: android
+      profile: preview
+  # publish_preview_build_ios:
+  #   name: Publish preview build ios
+  #   type: build
+  #   params:
+  #     platform: ios

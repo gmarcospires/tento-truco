@@ -1,55 +1,52 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
-import '@/global.css';
-
+import { Color } from 'expo-router';
 import { Platform } from 'react-native';
+
+export const WIN_SCORE = 12;
 
 export const Colors = {
   light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+    felt: '#1B4332',
+    feltMuted: '#2D6A4F',
+    surface: '#24543F',
+    surfaceElevated: 'rgba(255, 255, 255, 0.1)',
+    border: 'rgba(255, 255, 255, 0.22)',
+    text: '#FFFFFF',
+    textSecondary: 'rgba(255, 255, 255, 0.72)',
+    textMuted: 'rgba(255, 255, 255, 0.55)',
+    teamUs: '#74C0FC',
+    teamThem: '#FF8787',
+    accent: '#74C0FC',
+    buttonFilledText: '#0D2818',
+    overlay: 'rgba(0, 0, 0, 0.55)',
+    label: Platform.select({
+      ios: Color.ios.label,
+      android: Color.android.dynamic.onSurface,
+      default: '#FFFFFF',
+    }),
   },
   dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+    felt: '#0D2818',
+    feltMuted: '#1B4332',
+    surface: '#163D2A',
+    surfaceElevated: 'rgba(255, 255, 255, 0.08)',
+    border: 'rgba(255, 255, 255, 0.18)',
+    text: '#FFFFFF',
+    textSecondary: 'rgba(255, 255, 255, 0.72)',
+    textMuted: 'rgba(255, 255, 255, 0.5)',
+    teamUs: '#74C0FC',
+    teamThem: '#FF8787',
+    accent: '#74C0FC',
+    buttonFilledText: '#0D2818',
+    overlay: 'rgba(0, 0, 0, 0.65)',
+    label: Platform.select({
+      ios: Color.ios.label,
+      android: Color.android.dynamic.onSurface,
+      default: '#FFFFFF',
+    }),
   },
 } as const;
 
 export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
-
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
-  },
-});
 
 export const Spacing = {
   half: 2,
@@ -61,5 +58,22 @@ export const Spacing = {
   six: 64,
 } as const;
 
-export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+export const Typography = {
+  score: {
+    fontSize: 72,
+    fontWeight: '700' as const,
+    fontVariant: ['tabular-nums'] as ('tabular-nums')[],
+  },
+  sectionTitle: {
+    fontSize: 13,
+    fontWeight: '600' as const,
+    textTransform: 'uppercase' as const,
+    letterSpacing: 0.6,
+  },
+} as const;
+
+export const Motion = {
+  scoreEnter: 200,
+  scorePulse: { duration: 400, dampingRatio: 0.8 },
+  victoryEnter: 500,
+} as const;
