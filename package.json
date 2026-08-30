@@ -2,6 +2,7 @@
   "name": "tento-truco",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "packageManager": "bun@1.4.0",
   "dependencies": {
     "@expo/ui": "~57.0.14",
     "expo": "~57.0.18",
